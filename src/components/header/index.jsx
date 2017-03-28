@@ -6,7 +6,7 @@ import Nav from './nav';
 
 
 const Header = React.createClass({
-    mixins: [],
+  
     getInitialState () {
         return {
             is_menu_open: false
@@ -26,7 +26,7 @@ const Header = React.createClass({
                             <span className="icon-bar"></span>
                         </button>
                         <Link to="/" target="_self" className="navbar-brand" activeClassName=''>
-                            <img className="logo" src="./images/Logo.png" />
+                            <img className="logo" src="./Logo.png" />
                         </Link>
                     </div>
                     <div className="collapse navbar-collapse" id="site-nav">

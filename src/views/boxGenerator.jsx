@@ -3,27 +3,27 @@ import {Component, PropTypes} from 'react';
 
 import FontAwesome from 'react-fontawesome';
 
-const BoxGenerator = React.createClass({
-    mixins: [OnResize],
-
-    getInitialState() {
-        return {
-            loading: false,
-            error: false,
-            background: '#1FB6FF',
-            value:0,
-            width:"200",
-            height:"200",
-            border:"1px solid #333",
-            borderRadius:"0px 0px 0px 0px"
+class BoxGenerator extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+                 loading: false,
+                error: false,
+                background: '#1FB6FF',
+                value:0,
+                width:"200px",
+                height:"200px",
+                border:"1px solid #333",
+                borderRadius:"0px 0px 0px 0px"
         };
-    },
-    handleChangeComplete(color) {
+    }
+
+    handleChangeComplete = (color) => {
 
         console.log(color)
         this.setState({ background: color.hex });
-    },
-    handleChange: function(type,event) {
+    }
+    handleChange = (type,event) => {
         console.log(type);
         switch (type) {
             case "width":
@@ -44,8 +44,8 @@ const BoxGenerator = React.createClass({
             // default:
         }
 
-    },
-    getSidePanel(){
+    }
+    getSidePanel = () => {
         return (
             <div className="Grid col-lg-12 nopadding">
                 <div className="Grid-item  Grid-item-top Grid-item-dark">
@@ -60,10 +60,10 @@ const BoxGenerator = React.createClass({
                             onChange={this.handleChange.bind(this,"width")}
                           />
 
-                          <br/><span className="action-label" style={{"text-align":"center"}}>Width</span>
+                          <br/><span className="action-label" style={{"textAlign":"center"}}>Width</span>
                     </div>
                     <div className="col-lg-1">
-                        <FontAwesome size='1.5x' name='unlock-alt' />
+                        <FontAwesome  name='unlock-alt' />
                     </div>
                     <div className="col-lg-4">
                         <input
@@ -73,7 +73,7 @@ const BoxGenerator = React.createClass({
                             onChange={this.handleChange.bind(this,"height")}
                           />
 
-                          <br/><span className="action-label" style={{"text-align":"center"}}>Height</span>
+                          <br/><span className="action-label" style={{"textAlign":"center"}}>Height</span>
                     </div>
 
                 </div>
@@ -101,7 +101,7 @@ const BoxGenerator = React.createClass({
                     <div className="col-lg-7 center">
                         <input
                             className="text-box"
-                            style={{width:"200"}}
+                            style={{width:"200px"}}
                             type="text"
                             value={this.state.border}
                             onChange={this.handleChange.bind(this,"border")}
@@ -115,7 +115,7 @@ const BoxGenerator = React.createClass({
                     <div className="col-lg-7 center">
                         <input
                             className="text-box"
-                            style={{width:"200"}}
+                            style={{width:"200px"}}
                             type="text"
                             value={this.state.borderRadius}
                             onChange={this.handleChange.bind(this,"borderRadius")}
@@ -125,7 +125,7 @@ const BoxGenerator = React.createClass({
                 <div className="Grid-item Grid-item-bottom">…</div>
             </div>
         )
-    },
+    }
     render() {
         let box_style = {
             "width":this.state.width,
@@ -135,8 +135,8 @@ const BoxGenerator = React.createClass({
             "border":this.state.border
         };
         return (
-            <div className="container col-lg-12" style={{"height":window.height-60}}>
-                <div className="row" style={{ "height":window.height-60}}>
+            <div className="container col-lg-12" >
+                <div className="row" >
                     <div className="col-lg-8 subject">
                         <div className="element" style={box_style}></div>
                         {this.state.error}
@@ -148,6 +148,6 @@ const BoxGenerator = React.createClass({
             </div>
         );
     }
-});
+}
 
 export default BoxGenerator;

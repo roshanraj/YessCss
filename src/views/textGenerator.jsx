@@ -127,10 +127,10 @@ const TextGenerator = React.createClass({
         };
         return (
             <div className="container col-lg-12" style={{
-                "height": window.height - 60
+                
             }}>
                 <div className="row" style={{
-                    "height":window.height - 60
+                    
                 }}>
                     <div className="col-lg-8" >
                         <div className="element subject" style={text_style}>{this.state.text}</div>

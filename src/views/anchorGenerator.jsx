@@ -3,36 +3,31 @@ import {Component, PropTypes} from 'react';
 
 import FontAwesome from 'react-fontawesome';
 
-const AnchorGenerator = React.createClass({
-    mixins: [OnResize],
-
-
-//     shadow
-// border radius
-// background
-// foreground
-// border
-// pseudo (hover, focus and active) styling
-
-    getInitialState() {
-        return {
-            loading: false,
-            error: false,
-            text:"Text",
-            href:"https://google.com/",
-            background: '#000',
-            color:"#200",
-            border:"1px solid #333",
-            borderRadius:"0px 0px 0px 0px",
-            fontSize:"20px"
+class AnchorGenerator extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+                loading: false,
+                error: false,
+                text:"Text",
+                href:"https://google.com/",
+                background: '#000',
+                color:"#200",
+                border:"1px solid #333",
+                borderRadius:"0px 0px 0px 0px",
+                fontSize:"20px"
         };
-    },
-    handleChangeComplete(color) {
+    }
+
+   
+
+
+    handleChangeComplete = (color) => {
 
         console.log(color)
         this.setState({ background: color.hex });
-    },
-    handleChange: function(type,event) {
+    }
+    handleChange = (type,event) => {
         console.log(type);
         switch (type) {
             case "text":
@@ -59,8 +54,8 @@ const AnchorGenerator = React.createClass({
             // default:
         }
 
-    },
-    getSidePanel(){
+    }
+    getSidePanel = () => {
         return (
             <div className="Grid col-lg-12 nopadding">
                 <div className="Grid-item  Grid-item-top Grid-item-dark">
@@ -140,7 +135,7 @@ const AnchorGenerator = React.createClass({
                     <div className="col-lg-7 center">
                         <input
                             className="text-box"
-                            style={{width:"200"}}
+                            style={{width:"200px"}}
                             type="text"
                             value={this.state.border}
                             onChange={this.handleChange.bind(this,"border")}
@@ -154,7 +149,7 @@ const AnchorGenerator = React.createClass({
                     <div className="col-lg-7 center">
                         <input
                             className="text-box"
-                            style={{width:"200"}}
+                            style={{width:"200px"}}
                             type="text"
                             value={this.state.borderRadius}
                             onChange={this.handleChange.bind(this,"borderRadius")}
@@ -164,7 +159,7 @@ const AnchorGenerator = React.createClass({
                 <div className="Grid-item Grid-item-bottom">…</div>
             </div>
         )
-    },
+    }
     render() {
         let box_style = {
 
@@ -175,8 +170,8 @@ const AnchorGenerator = React.createClass({
             "fontSize":this.state.fontSize
         };
         return (
-            <div className="container col-lg-12" style={{"height":window.height-60}}>
-                <div className="row" style={{ "height":window.height-60}}>
+            <div className="container col-lg-12">
+                <div className="row">
                     <div className="col-lg-8 subject">
                         <a target="_blank" href={this.state.href} className="element" style={box_style}>{this.state.text}</a>
                         {this.state.error}
@@ -186,8 +181,10 @@ const AnchorGenerator = React.createClass({
                     </div>
                 </div>
             </div>
-        );
+        );  
     }
-});
+}
+
+
 
 export default AnchorGenerator;

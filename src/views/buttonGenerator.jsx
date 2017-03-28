@@ -2,7 +2,8 @@ import React from 'react';
 import {Component, PropTypes} from 'react';
 
 import FontAwesome from 'react-fontawesome';
-import Switch from 'react-toggle-switch';
+import Switch from 'react-toolbox/lib/switch';
+// import Switch from 'react-toggle-switch';
 import MultiSelect from '../components/multiSelect';
 
 import BoxShadow from '../components/boxShadow';
@@ -16,8 +17,8 @@ const ButtonGenerator = React.createClass({
             error: false,
             text: "Click Me",
             color: "#1FB6FF",
-            fontWeight: "400",
-            fontSize: "32",
+            fontWeight: "400px",
+            fontSize: "32px",
             fontStyle: "normal",
             isBoxShadow: false,
             isBorder: false,
@@ -63,7 +64,13 @@ const ButtonGenerator = React.createClass({
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Box shadow</a>
                             </div>
                             <div className = "small" >
-                                <Switch onClick={() => { this.setState({isBorder: !this.state.isBorder});   } } on={this.state.isBorder}/>
+                                {/*<Switch onClick={() => { this.setState({isBorder: !this.state.isBorder});   } } on={this.state.isBorder}/>*/}
+                                <Switch
+                                        checked={this.state.isBorder}
+                                        label="Mail notifications"
+                                        onChange={() => { this.setState({isBorder: !this.state.isBorder})}}
+                                        ></Switch>
+
                             </div>
                         </div>
                     </div>
@@ -94,7 +101,7 @@ const ButtonGenerator = React.createClass({
 
                 </div>
                 <div className="Grid-item">
-                    <MultiSelect name="fsfsdaf" value={0}></MultiSelect>
+                    {/*<MultiSelect name="fsfsdaf" value={0}></MultiSelect>*/}
                 </div>
                 <div className="Grid-item">
                     <div className="textHolder">
@@ -184,12 +191,8 @@ const ButtonGenerator = React.createClass({
             "boxshadow": shadow_style,
         };
         return (
-            <div className="container col-sm-12" style={{
-                "height": window.height - 60
-            }}>
-                <div className="row" style={{
-                    "height": window.height - 60
-                }}>
+            <div className="container col-sm-12" >
+                <div className="row" >
                     <div className="col-sm-8 subject" >
                         <div className="element" style={text_style}>{this.state.text}</div>
                         {this.state.error}

@@ -7,11 +7,9 @@
 
     <meta name="description" content="">
     <meta name="hostname" content="localhost">
-
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/react-starter-favicon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/react-starter-favicon.png"/>
     <link rel="shortcut icon" href="/images/react-starter-favicon.png">
-
-    <link rel="stylesheet" href="/dist/theme.css">
 
     <title>YessCss - Box Generator, Text Generator, Button Generator</title>
 
@@ -24,24 +22,8 @@
 </head>
 <body class="bg-shade">
 <div id="app"></div>
-<script src="/dist/vendor.js"></script>
-<script src="/dist/app.js"></script>
+
+<!--<script src="/main.js"></script>-->
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC45VmwegEBr81Wy0ksqO_xxTPLeTBse_k&callback=initMap" async defer></script> -->
-<script>
-    for (var n in window.exports) {
-        window[n] = window.exports[n];
-    }
-    window.$ = window.jQuery;
-    window.moment.locale("en");
-    Registry.ConfigStore.loadInitialData({
-        'data': 'data'
-    });
-    $(function () {
-        ReactDOM.render(
-                React.createElement(Router.Router, {history: Registry.history}, Registry.routes),
-                document.getElementById('app')
-        );
-    });
-</script>
 </body>
 </html>

@@ -1,53 +1,61 @@
-import jQuery from 'jquery';
-import { browserHistory } from 'react-router'
 
-// setup CSRF tokens in jquery
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        let cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            let cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
+///////////////////////////////////////////
+// jquery and tether for bootstrap to use
+// alternative is to link them in index.html
+import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
+import jquery from 'jquery';
+import tether from 'tether';
+window.$ = window.jQuery=jquery;
+//window.Tether=require('tether');
+window.Tether = tether;
+require('bootstrap/dist/js/bootstrap');
+/////////////////////////////////////////////
 
-let csrftoken = getCookie('csrf');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { Router, Route, IndexRoute} from 'react-router';
 
-function csrfSafeMethod(method) {
-    // these HTTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-jQuery.ajaxSetup({
-    beforeSend: function (xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-            xhr.setRequestHeader('X-CSRFToken', csrftoken);
-        }
-    }
-});
+/////////////////////////////////////////////////////////////////////////
+// browserHistory would be preferred over hashHistory, but browserHistory
+// would require configuring the server. So we will use hashHistory here.
+// Please change to browserHistory if you have your own backend server.
+import {browserHistory as history} from 'react-router';
+// import { useRouterHistory } from 'react-router';
+// import { createHashHistory } from 'history'
+// const history = useRouterHistory(createHashHistory)({ queryKey: false });
+//////////////////////////////////////////////////////////////////////////
 
-// these get exported to a global variable, which is important as its the only
-// way we can call into scoped objects
-export default {
-    jQuery: jQuery,
-    moment: require('moment'),
-    React: require('react'),
-    ReactDOM: require('react-dom'),
-    Router: require('react-router'),
 
-    Registry: {
-        api: require('./api'),
-        routes: require('./routes'),
-        history: browserHistory,
-        mixins: {
-            ApiMixin: require('./mixins/apiMixin'),
-        },
-        ConfigStore: require('./stores/configStore')
-    }
-};
+
+import App from './views/app';
+import BoxGeneratorView from './views/BoxGenerator';
+import TextGeneratorView from './views/textGenerator';
+import ButtonGeneratorView from './views/buttonGenerator';
+import AnchorGeneratorView from './views/anchorGenerator';
+
+
+import RouteNotFound from './views/routeNotFound';
+import errorHandler from './utils/errorHandler';
+
+import './index.scss';
+
+
+ReactDOM.render(
+  
+    <Router history={history}>
+        <Route path="/" component={errorHandler(App)}>
+            <IndexRoute component={errorHandler(BoxGeneratorView)}/>
+            <Route path="/boxgenerator" component={errorHandler(BoxGeneratorView)}/>
+            <Route path="/textgenerator" component={errorHandler(TextGeneratorView)}/>
+            <Route path="/buttongenrator" component={errorHandler(ButtonGeneratorView)}/>
+            <Route path="/anchortaggenerator" component={errorHandler(AnchorGeneratorView)}/>
+        
+            <Route path="*" component={errorHandler(RouteNotFound)} />
+        </Route>
+    </Router>
+  ,
+  document.getElementById('app')
+);
+   
