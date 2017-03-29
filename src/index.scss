@@ -108,15 +108,16 @@ body {
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    position: absolute;
+    // position: absolute;
 }
 
 .Grid {
   display: flex;
   align-items: center;
-  position:absolute;
+  // position:absolute;
   flex-direction: column;
   height: 100%;
+  width: 100%;
   &-item {
       width: 100%;
       padding:1em 0;
@@ -171,4 +172,52 @@ textarea:focus, input:focus{
   & > * {
     margin: auto;
   }
+}
+
+
+
+
+// override bootstrap components
+.navbar-nav{
+  flex-direction: row;
+}
+
+// New sass
+#app{
+    display:flex;
+    flex-direction: column;
+
+    .workspace{
+          height: calc(100% - 0px);
+          display: inline-block;
+          overflow: auto;
+          position: absolute;
+          width: 100%;
+    }
+    .holder{
+      display:flex;
+      flex-direction:row;
+      height:calc(100% - 65px);
+      
+      .subject{
+        display:flex;
+        flex: 2 1 400px;
+        align-items: center;
+        justify-content: center;
+        position:relative;
+
+        .element{
+          top: 50%;
+          transform: translateX(-50%);
+          left: 50%;
+          transform: translate(-50%,-50%);
+          position: absolute;
+        }
+      }
+      .sidebar{
+        display:flex;
+        flex: 1 1 200px;
+        overflow:auto;
+      }
+    }
 }

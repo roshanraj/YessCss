@@ -1,6 +1,6 @@
 import React, {propTypes} from 'react';
 import ClassNames from 'classnames';
-import Slider from 'react-toolbox/lib/slider';
+// import Slider from 'react-toolbox/lib/slider';
 
 class MultiSelect extends React.Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class MultiSelect extends React.Component {
     render() {
         return (
             <div className="">
-                <Slider value={this.state.slider1} onChange={this.handleChange.bind(this, 'slider1')} />
+                {/*<Slider value={this.state.slider1} onChange={this.handleChange.bind(this, 'slider1')} />*/}
             </div>
         );
     }

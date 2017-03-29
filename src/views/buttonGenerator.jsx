@@ -2,35 +2,39 @@ import React from 'react';
 import {Component, PropTypes} from 'react';
 
 import FontAwesome from 'react-fontawesome';
-import Switch from 'react-toolbox/lib/switch';
+// import Switch from 'react-toolbox/lib/switch';
 // import Switch from 'react-toggle-switch';
 import MultiSelect from '../components/multiSelect';
 
 import BoxShadow from '../components/boxShadow';
 
-const ButtonGenerator = React.createClass({
-
-
-    getInitialState() {
-        return {
-            loading: false,
-            error: false,
-            text: "Click Me",
-            color: "#1FB6FF",
-            fontWeight: "400px",
-            fontSize: "32px",
-            fontStyle: "normal",
-            isBoxShadow: false,
-            isBorder: false,
-            value: 0
+class ButtonGenerator extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+                    loading: false,
+                    error: false,
+                    text: "Click Me",
+                    color: "#1FB6FF",
+                    fontWeight: "400px",
+                    fontSize: "32px",
+                    fontStyle: "normal",
+                    isBoxShadow: false,
+                    isBorder: false,
+                    value: 0
         };
-    },
-    handleChangeComplete(color) {
+    }
+
+
+
+   
+    handleChangeComplete = (color) => {
 
         console.log(color)
         this.setState({background: color.hex});
-    },
-    handleChange: function(type, event) {
+    }
+
+    handleChange = (type, event) => {
         console.log(type);
         switch (type) {
             case "text":
@@ -53,9 +57,9 @@ const ButtonGenerator = React.createClass({
                 break;
         }
 
-    },
+    }
 
-    getBorder(){
+    getBorder = () => {
         return (
                 <div className="panel panel-default">
                     <div className="panel-heading">
@@ -65,32 +69,32 @@ const ButtonGenerator = React.createClass({
                             </div>
                             <div className = "small" >
                                 {/*<Switch onClick={() => { this.setState({isBorder: !this.state.isBorder});   } } on={this.state.isBorder}/>*/}
-                                <Switch
+                                {/*<Switch
                                         checked={this.state.isBorder}
                                         label="Mail notifications"
                                         onChange={() => { this.setState({isBorder: !this.state.isBorder})}}
-                                        ></Switch>
+                                        ></Switch>*/}
 
                             </div>
                         </div>
                     </div>
                     <div id="collapse2" className="panel-collapse collapse in">
                         <div className="panel-body">
-                            <div className="col-sm-3">
+                            <div className="">
                                 box-shadow
                             </div>
-                            <div className="col-sm-7 center">
+                            <div className="center">
                                 <input className="text-box" type="text" value={this.state.color} onChange={this.handleChange.bind(this, "color")}/>
                             </div>
                         </div>
                     </div>
                 </div>
             )
-    },
-    getSidePanel() {
+    }
+    getSidePanel = () => {
 
         return (
-            <div className="Grid col-sm-12 nopadding">
+            <div className="Grid  nopadding">
                 <div className="Grid-item  Grid-item-top Grid-item-dark">
                     <div className="textHolder">
                       Text
@@ -139,10 +143,10 @@ const ButtonGenerator = React.createClass({
                 </div>
 
                 <div className="Grid-item">
-                    <div className="col-sm-3">
+                    <div className="">
                         Font Style
                     </div>
-                    <div className="col-sm-7 center">
+                    <div className=" center">
                         <select className="text-box" value={this.state.fontStyle} name="fontStyle" onChange={this.handleChange.bind(this, "fontStyle")}>
                             <option value="normal">Normal</option>
                             <option value="italic">Italic</option>
@@ -151,10 +155,10 @@ const ButtonGenerator = React.createClass({
                     </div>
                 </div>
                 <div className="Grid-item">
-                    <div className="col-sm-3">
+                    <div className="">
                         Box Background
                     </div>
-                    <div className="col-sm-7 center">
+                    <div className="center">
                         <input className="text-box" type="text" value={this.state.color} onChange={this.handleChange.bind(this, "color")}/>
                     </div>
                 </div>
@@ -173,7 +177,7 @@ const ButtonGenerator = React.createClass({
             </div>
 
         )
-    },
+    }
     render() {
        
         let shadow_style = (typeof this.refs.boxshadow == "undefined")?"0 0 0 #888": (this.refs.boxshadow.vlength+"  "+this.refs.boxshadow.hlength+"  "+this.refs.boxshadow.vlength+"  "+this.refs.boxshadow.vlength+"  "+this.refs.boxshadow.color);
@@ -191,22 +195,22 @@ const ButtonGenerator = React.createClass({
             "boxshadow": shadow_style,
         };
         return (
-            <div className="container col-sm-12" >
-                <div className="row" >
-                    <div className="col-sm-8 subject" >
+            <div className="holder" >
+               
+                    <div className="subject" >
                         <div className="element" style={text_style}>{this.state.text}</div>
                         {this.state.error}
                     </div>
-                    <div className="col-sm-4 nopadding" style={{
+                    <div className="sidebar" style={{
                         "border": "1px solid #cccccc",
                         "height": "100%"
                     }}>
                         {this.getSidePanel()}
                     </div>
-                </div>
+               
             </div>
         );
     }
-});
+}
 
 export default ButtonGenerator;

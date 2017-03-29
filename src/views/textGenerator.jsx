@@ -4,27 +4,30 @@ import {Component, PropTypes} from 'react';
 
 import FontAwesome from 'react-fontawesome';
 
-const TextGenerator = React.createClass({
 
-
-    getInitialState() {
-        return {
-            loading: false,
-            error: false,
-            text: "YessCSS",
-            color: "#1FB6FF",
-            fontWeight: "400",
-            fontSize: "32",
-            fontStyle: "normal",
-            value: 0
+class TextGenerator extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+                   loading: false,
+                    error: false,
+                    text: "YessCSS",
+                    color: "#1FB6FF",
+                    fontWeight: "400",
+                    fontSize: "32",
+                    fontStyle: "normal",
+                    value: 0
         };
-    },
-    handleChangeComplete(color) {
+    }
+
+
+    handleChangeComplete = (color) => {
 
         console.log(color)
         this.setState({background: color.hex});
-    },
-    handleChange: function(type, event) {
+    }
+
+    handleChange = (type, event) => {
         console.log(type);
         switch (type) {
             case "text":
@@ -47,22 +50,22 @@ const TextGenerator = React.createClass({
                 break;
         }
 
-    },
-    getSidePanel() {
+    }
+    getSidePanel = () => {
         return (
-            <div className="Grid col-lg-12 nopadding">
+            <div className="Grid  nopadding">
                 <div className="Grid-item  Grid-item-top Grid-item-dark">
-                    <div className="col-lg-3">
+                    <div className="">
                         <p className="action-label">Text</p>
                     </div>
-                    <div className="col-lg-7 center">
+                    <div className=" center">
                         <input className="text-box" type="text" value={this.state.text} onChange={this.handleChange.bind(this, "text")}/>
                     </div>
 
                 </div>
 
                 <div className="Grid-item">
-                    <div className="col-lg-3">
+                    <div className="">
                         <p className="action-label">Color</p>
                     </div>
                     <div className="entry form-group col-sm-7">
@@ -76,19 +79,19 @@ const TextGenerator = React.createClass({
                 </div>
 
                 <div className="Grid-item">
-                    <div className="col-lg-3">
+                    <div className="">
                         <p className="action-label">Size</p>
                     </div>
-                    <div className="col-lg-7 center">
+                    <div className="center">
                         <input className="text-box" type="number" value={this.state.fontSize} onChange={this.handleChange.bind(this, "fontSize")} name="size" min="1"/>
                     </div>
                 </div>
 
                 <div className="Grid-item">
-                    <div className="col-lg-3">
+                    <div className="">
                         <p className="action-label">Weight</p>
                     </div>
-                    <div className="col-lg-7 center">
+                    <div className="center">
                         <select className="text-box" value={this.state.fontWeight} name="fontStyle" onChange={this.handleChange.bind(this, "fontWeight")}>
                             <option value="100">100</option>
                             <option value="200">200</option>
@@ -102,10 +105,10 @@ const TextGenerator = React.createClass({
                 </div>
 
                 <div className="Grid-item">
-                    <div className="col-lg-3">
+                    <div className="">
                         <p className="action-label">Style</p>
                     </div>
-                    <div className="col-lg-7 center">
+                    <div className=" center">
                         <select className="text-box" value={this.state.fontStyle} name="fontStyle" onChange={this.handleChange.bind(this, "fontStyle")}>
                             <option value="normal">Normal</option>
                             <option value="italic">Italic</option>
@@ -116,7 +119,7 @@ const TextGenerator = React.createClass({
                 <div className="Grid-item Grid-item-bottom">…</div>
             </div>
         )
-    },
+    }
     render() {
         let text_style = {
             "color": this.state.color,
@@ -126,27 +129,19 @@ const TextGenerator = React.createClass({
             "border": "none"
         };
         return (
-            <div className="container col-lg-12" style={{
-                
-            }}>
-                <div className="row" style={{
-                    
-                }}>
-                    <div className="col-lg-8" >
+            <div className="holder ">
+              
+                    <div className="subject" >
                         <div className="element subject" style={text_style}>{this.state.text}</div>
                         {this.state.error}
                     </div>
-                    <div className="col-lg-4 nopadding" style={{
-                        "border": "1px solid #cccccc",
-                        "height": "100%",
-                        "background":"#F7F7F7"
-                    }}>
+                    <div className="sidebar" >
                         {this.getSidePanel()}
                     </div>
                 </div>
-            </div>
+            
         );
     }
-});
+}
 
 export default TextGenerator;

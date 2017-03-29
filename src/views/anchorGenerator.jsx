@@ -57,12 +57,12 @@ class AnchorGenerator extends React.Component {
     }
     getSidePanel = () => {
         return (
-            <div className="Grid col-lg-12 nopadding">
+            <div className="Grid  nopadding">
                 <div className="Grid-item  Grid-item-top Grid-item-dark">
-                    <div className="col-lg-3">
+                    <div className="">
                         Text
                     </div>
-                    <div className="col-lg-7 center">
+                    <div className=" center">
                         <input
                             className="text-box"
                             type="text"
@@ -72,10 +72,10 @@ class AnchorGenerator extends React.Component {
                     </div>
                 </div>
                 <div className="Grid-item">
-                    <div className="col-lg-3">
+                    <div className="">
                         href
                     </div>
-                    <div className="col-lg-7 center">
+                    <div className=" center">
                         <input
                             className="text-box"
                             type="text"
@@ -86,10 +86,10 @@ class AnchorGenerator extends React.Component {
                 </div>
 
                 <div className="Grid-item  Grid-item-top Grid-item-dark">
-                    <div className="col-lg-3">
+                    <div className="">
                         Font Size
                     </div>
-                    <div className="col-lg-7 center">
+                    <div className=" center">
                         <input
                             className="text-box"
                             type="text"
@@ -100,10 +100,10 @@ class AnchorGenerator extends React.Component {
                 </div>
 
                 <div className="Grid-item">
-                    <div className="col-lg-3">
+                    <div className="">
                         Color
                     </div>
-                    <div className="col-lg-7 center">
+                    <div className=" center">
                         <input
                             className="text-box"
                             type="text"
@@ -114,10 +114,10 @@ class AnchorGenerator extends React.Component {
                 </div>
 
                 <div className="Grid-item">
-                    <div className="col-lg-3">
+                    <div className="">
                         Background Color
                     </div>
-                    <div className="col-lg-7 center">
+                    <div className=" center">
                         <input
                             className="text-box"
                             type="text"
@@ -129,10 +129,10 @@ class AnchorGenerator extends React.Component {
 
 
                 <div className="Grid-item">
-                    <div className="col-lg-3">
+                    <div className="">
                         Border
                     </div>
-                    <div className="col-lg-7 center">
+                    <div className=" center">
                         <input
                             className="text-box"
                             style={{width:"200px"}}
@@ -143,10 +143,10 @@ class AnchorGenerator extends React.Component {
                     </div>
                 </div>
                 <div className="Grid-item">
-                    <div className="col-lg-3">
+                    <div className="">
                         Border Radius
                     </div>
-                    <div className="col-lg-7 center">
+                    <div className=" center">
                         <input
                             className="text-box"
                             style={{width:"200px"}}
@@ -170,16 +170,16 @@ class AnchorGenerator extends React.Component {
             "fontSize":this.state.fontSize
         };
         return (
-            <div className="container col-lg-12">
-                <div className="row">
-                    <div className="col-lg-8 subject">
+            <div className="holder">
+                
+                    <div className="subject">
                         <a target="_blank" href={this.state.href} className="element" style={box_style}>{this.state.text}</a>
                         {this.state.error}
                     </div>
-                    <div className="col-lg-4 nopadding" style={{"border":"1px solid #cccccc", "height":"100%"}}>
+                    <div className="sidebar" style={{"border":"1px solid #cccccc", "height":"100%"}}>
                         {this.getSidePanel()}
                     </div>
-                </div>
+                
             </div>
         );  
     }

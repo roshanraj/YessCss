@@ -44,9 +44,9 @@ const App = React.createClass({
 
     render() {
         return (
-            <div>
+            <div className="workspace">
                 <Header/>
-                <div id="content">{this.props.children}</div>
+                {this.props.children}
             </div>
         );
     }

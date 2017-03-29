@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 import ClassNames from 'classnames';
 import ServerLink from '../serverLink';
 import FontAwesome from 'react-fontawesome';
-import Switch from 'react-toggle-switch'
+// import Switch from 'react-toggle-switch'
 import $ from 'jquery';
 
 class BoxShadow extends React.Component {
@@ -62,7 +62,7 @@ class BoxShadow extends React.Component {
                             <a ref="collapseButton" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Box shadow</a>
                         </div>
                         <div className = "small" >
-                            <Switch  onClick={() => { this._handleCollapse() }} on={this.state.isBoxShadow}/>
+                            {/*<Switch  onClick={() => { this._handleCollapse() }} on={this.state.isBoxShadow}/>*/}
                         </div>
                     </div>
                 </div>
