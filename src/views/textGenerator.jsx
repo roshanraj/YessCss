@@ -1,7 +1,7 @@
 import React from 'react';
 import {Component, PropTypes} from 'react';
-
-
+// import ColorsPicker from 'react-colors-picker';
+import ColorPicker from 'react-color-picker'
 import FontAwesome from 'react-fontawesome';
 
 
@@ -51,6 +51,11 @@ class TextGenerator extends React.Component {
         }
 
     }
+    onDrag(color, c) {
+    this.setState({
+      color
+    })
+  }
     getSidePanel = () => {
         return (
             <div className="Grid  nopadding">
@@ -73,6 +78,8 @@ class TextGenerator extends React.Component {
                         <span className="input-group-btn">
                         	<button style={{"backgroundColor":this.state.color, "width":40}} className="btn" type="button"><span className="glyphicon glyphicon-no"></span></button>
                         </span>
+                        
+                        {/*<ColorPicker value={this.state.color} onDrag={this.onDrag.bind(this)} />*/}
                         <input className="form-control" type="text" value={this.state.color} onChange={this.handleChange.bind(this, "color")}/>
                       </div>
                   </div>

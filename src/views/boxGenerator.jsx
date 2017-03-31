@@ -1,8 +1,7 @@
 import React from 'react';
 import { Component, PropTypes } from 'react';
-
-import Infinite from 'react-infinite';
-import InfiniteScroll from 'react-infinite-scroller';
+import Single from '../components/single'
+import Color from '../components/color'
 import FontAwesome from 'react-fontawesome';
 
 class BoxGenerator extends React.Component {
@@ -44,6 +43,9 @@ class BoxGenerator extends React.Component {
             case "borderRadius":
                 this.setState({ borderRadius: event.target.value });
                 break;
+            case "background":
+                this.setState({ background: event.target.value });
+                break;
             // default:
         }
 
@@ -51,81 +53,13 @@ class BoxGenerator extends React.Component {
     getSidePanel = () => {
         return (
             <div className="Grid  nopadding">
-                <div className="Grid-item  Grid-item-top Grid-item-dark">
-                    <div className="">
-                        <p className="action-label">Size</p>
-                    </div>
-                    <div className=" center">
-                        <input
-                            className="text-box"
-                            type="text"
-                            value={this.state.width}
-                            onChange={this.handleChange.bind(this, "width")}
-                            />
+                
 
-                        <br /><span className="action-label" style={{ "textAlign": "center" }}>Width</span>
-                    </div>
-                    <div className="">
-                        <FontAwesome name='unlock-alt' />
-                    </div>
-                    <div className="">
-                        <input
-                            className="text-box"
-                            type="text"
-                            value={this.state.height}
-                            onChange={this.handleChange.bind(this, "height")}
-                            />
-
-                        <br /><span className="action-label" style={{ "textAlign": "center" }}>Height</span>
-                    </div>
-
-                </div>
-
-
-                <div className="Grid-item">
-                    <div className="">
-                        <p className="action-label">Color</p>
-                    </div>
-                    <div className=" center">
-                        <input
-                            className="text-box"
-                            type="text"
-                            value={this.state.background}
-                            onChange={this.handleChange.bind(this, "color")}
-                            />
-                    </div>
-                </div>
-
-
-                <div className="Grid-item">
-                    <div className="">
-                        <p className="action-label">Border</p>
-                    </div>
-                    <div className="center">
-                        <input
-                            className="text-box"
-                            style={{ width: "200px" }}
-                            type="text"
-                            value={this.state.border}
-                            onChange={this.handleChange.bind(this, "border")}
-                            />
-                    </div>
-                </div>
-                <div className="Grid-item">
-                    <div className="">
-                        <p className="action-label">Border Radius</p>
-                    </div>
-                    <div className=" center">
-                        <input
-                            className="text-box"
-                            style={{ width: "200px" }}
-                            type="text"
-                            value={this.state.borderRadius}
-                            onChange={this.handleChange.bind(this, "borderRadius")}
-                            />
-                    </div>
-                </div>
-                <div className="Grid-item Grid-item-bottom">…</div>
+                <Single name="Height" propname="height" ivalue={this.state.height} func={this.handleChange}></Single>
+                <Single name="Width" propname="width" ivalue={this.state.width} func={this.handleChange}></Single>
+                <Color name="Color" propname="background" ivalue={this.state.background} func={this.handleChange} color={this.state.background}></Color>
+                
+                
             </div>
         )
     }
