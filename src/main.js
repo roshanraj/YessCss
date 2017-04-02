@@ -2,14 +2,14 @@
 ///////////////////////////////////////////
 // jquery and tether for bootstrap to use
 // alternative is to link them in index.html
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 import jquery from 'jquery';
 import tether from 'tether';
 window.$ = window.jQuery=jquery;
 //window.Tether=require('tether');
 window.Tether = tether;
-require('bootstrap/dist/js/bootstrap');
+// require('bootstrap/dist/js/bootstrap');
 /////////////////////////////////////////////
 
 import React from 'react';

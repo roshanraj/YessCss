@@ -1,8 +1,12 @@
 import React from 'react';
 import { Component, PropTypes } from 'react';
-import Single from '../components/single'
-import Color from '../components/color'
+import Single from '../components/single';
+import Three from '../components/three';
+import Color from '../components/color';
 import FontAwesome from 'react-fontawesome';
+
+import BoxShadow from '../components/boxShadow';
+// import Slider from 'material-ui/Slider';
 
 class BoxGenerator extends React.Component {
     constructor(props) {
@@ -16,7 +20,8 @@ class BoxGenerator extends React.Component {
             height: "200px",
             border: "1px solid #333",
             borderRadius: "0px 0px 0px 0px",
-            testList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+            opacity: 1,
+            testList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
         };
     }
 
@@ -24,6 +29,10 @@ class BoxGenerator extends React.Component {
 
         console.log(color)
         this.setState({ background: color.hex });
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        return true;
     }
     handleChange = (type, event) => {
         console.log(type);
@@ -46,6 +55,9 @@ class BoxGenerator extends React.Component {
             case "background":
                 this.setState({ background: event.target.value });
                 break;
+            case "opacity":
+                this.setState({ opacity: event.target.value });
+                break;
             // default:
         }
 
@@ -54,30 +66,45 @@ class BoxGenerator extends React.Component {
         return (
             <div className="Grid  nopadding">
                 
-
+                
                 <Single name="Height" propname="height" ivalue={this.state.height} func={this.handleChange}></Single>
                 <Single name="Width" propname="width" ivalue={this.state.width} func={this.handleChange}></Single>
+                <Single name="Border-Radius" propname="borderRadius" ivalue={this.state.borderRadius} func={this.handleChange}></Single>
                 <Color name="Color" propname="background" ivalue={this.state.background} func={this.handleChange} color={this.state.background}></Color>
+                <Three name="Opacity"    
+                        propname="opacity" 
+                        func={this.handleChange} 
+                        currentValue={this.state.opacity}
+                        min={0}
+                        max={1}></Three>
+                <BoxShadow ref="boxshadow"></BoxShadow>
                 
-                
+
+    
+
+
+
+
+
             </div>
         )
     }
-    getList = () => {
-        console.log("Inside block for list");
-        var newList = []
-        for (var i = 0; i <= 10; i++)
-            newList.push(Math.floor(Math.random() * 100))
-        this.setState({ testList: this.state.testList.concat(newList) })
-        console.log("new list is ", this.state.testList);
-    }
+    // getList = () => {
+    //     console.log("Inside block for list");
+    //     var newList = []
+    //     for (var i = 0; i <= 10; i++)
+    //         newList.push(Math.floor(Math.random() * 100))
+    //     this.setState({ testList: this.state.testList.concat(newList) })
+    //     console.log("new list is ", this.state.testList);
+    // }
     render() {
         let box_style = {
             "width": this.state.width,
             "height": this.state.height,
             "borderRadius": this.state.borderRadius,
             "background": this.state.background,
-            "border": this.state.border
+            "border": this.state.border,
+            "opacity": this.state.opacity
         };
         return (
             <div className="holder" >

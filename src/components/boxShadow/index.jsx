@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 import ClassNames from 'classnames';
 import ServerLink from '../serverLink';
 import FontAwesome from 'react-fontawesome';
-// import Switch from 'react-toggle-switch'
+import Switch from 'react-toggle-switch'
 import $ from 'jquery';
 
 class BoxShadow extends React.Component {
@@ -55,18 +55,18 @@ class BoxShadow extends React.Component {
 
     render() {
         return (
-            <div className="ccollapse panel panel-default">
-                <div className="panel-heading">
-                    <div className="panel-title block">
+            <div className="ccollapse ">
+                <div className="heading">
+                    <div className="title block">
                         <div className = "big">
-                            <a ref="collapseButton" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Box shadow</a>
+                            <a ref="collapseButton" data-toggle="collapse" data-parent="#accordion" href="#collapse112">Box shadow</a>
                         </div>
                         <div className = "small" >
-                            {/*<Switch  onClick={() => { this._handleCollapse() }} on={this.state.isBoxShadow}/>*/}
+                            <Switch  onClick={() => { this._handleCollapse() }} on={this.state.isBoxShadow}/>
                         </div>
                     </div>
                 </div>
-                <div id="collapse1" className="panel-collapse collapse">
+                <div id="collapse112" className="panel-collapse collapse">
                     <div className="panel-body">
                         <div className="col-sm-5">
                             Horizontal length

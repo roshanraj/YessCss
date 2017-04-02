@@ -21,7 +21,7 @@ const Nav = React.createClass({
     },
 
     componentDidMount(){
-        jQuery(ReactDOM.findDOMNode(this.refs.mainNav)).find('.dropdown-toggle').dropdown();
+        // jQuery(ReactDOM.findDOMNode(this.refs.mainNav)).find('.dropdown-toggle').dropdown();
     },
 
     toggleMenu: function(){

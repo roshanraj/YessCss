@@ -1,6 +1,5 @@
 import React, {propTypes} from 'react';
 import ClassNames from 'classnames';
-// import Slider from 'react-toolbox/lib/slider';
 
 class Color extends React.Component {
     constructor(props) {
@@ -38,6 +37,7 @@ class Color extends React.Component {
                             value={this.props.ivalue}
                             onChange={this.props.func.bind(this,this.props.propname)}
                             />
+                            
                     </div>
                 </div>
             
