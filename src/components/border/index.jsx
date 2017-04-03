@@ -47,6 +47,14 @@ class Border extends React.Component {
     _handleCollapse(){
         this.setState({isBoxShadow: (!this.state.isBoxShadow)}); 
         this.refs.collapseButton.click();
+        if (this.state.isBoxShadow){
+            event.target.value = "";
+            this.props.func(this.props.propname, event);
+        }else{
+            event.target.value = this.state.borderWidth+" "+this.state.borderType+" "+this.state.borderColor;
+            this.props.func(this.props.propname, event);
+        }
+        
     }
 
     render() {
