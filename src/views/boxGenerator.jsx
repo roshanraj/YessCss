@@ -6,6 +6,7 @@ import Color from '../components/color';
 import FontAwesome from 'react-fontawesome';
 
 import BoxShadow from '../components/boxShadow';
+import Border from '../components/border';
 // import Slider from 'material-ui/Slider';
 
 class BoxGenerator extends React.Component {
@@ -35,7 +36,7 @@ class BoxGenerator extends React.Component {
         return true;
     }
     handleChange = (type, event) => {
-        console.log(type);
+        console.log(type, event.target.value);
         switch (type) {
             case "width":
                 this.setState({ width: event.target.value });
@@ -47,6 +48,7 @@ class BoxGenerator extends React.Component {
                 this.setState({ background: event.target.value });
                 break;
             case "border":
+
                 this.setState({ border: event.target.value });
                 break;
             case "borderRadius":
@@ -78,6 +80,12 @@ class BoxGenerator extends React.Component {
                         min={0}
                         max={1}></Three>
                 <BoxShadow ref="boxshadow"></BoxShadow>
+                <Border ref="border"
+                           name="Border"
+                           propname="border"
+                           ivalue={this.state.border}
+                           func={this.handleChange}
+                           ></Border>
                 
 
     
@@ -89,14 +97,7 @@ class BoxGenerator extends React.Component {
             </div>
         )
     }
-    // getList = () => {
-    //     console.log("Inside block for list");
-    //     var newList = []
-    //     for (var i = 0; i <= 10; i++)
-    //         newList.push(Math.floor(Math.random() * 100))
-    //     this.setState({ testList: this.state.testList.concat(newList) })
-    //     console.log("new list is ", this.state.testList);
-    // }
+    
     render() {
         let box_style = {
             "width": this.state.width,
@@ -113,19 +114,7 @@ class BoxGenerator extends React.Component {
                     <div className="element" style={box_style}></div>
                     {this.state.error}
                 </div>
-             {/*   <Infinite onInfiniteLoad={() => { this.getList() } }  infiniteLoadBeginEdgeOffset={200} containerHeight={400} elementHeight={100} displayBottomUpwards>
-                    {
-                        this.state.testList.map(function (val, index) {
-                            return (
-                                <div className="" style={{ height: "50px", width: "100px", border: "1px solid #888" }} key={index}>
-                                    {val}
-                                </div>
-                            )
-                        })
-                    }
-
-                </Infinite> */}
-                
+                         
                 <div className="sidebar" style={{ "border": "1px solid #cccccc", "height": "100%", "background": "#F7F7F7" }}>
                     {this.getSidePanel()}
                 </div>

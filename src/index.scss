@@ -568,21 +568,24 @@ textarea:focus, input:focus{
 /// colapse
 .ccollapse{
 
+    padding-top: 20px;
     display: flex;
-    padding: 1em 0;
     border-bottom: 1px solid #ccc;
     font-size: 20px;
     flex-direction: column;
     flex: 0 0 auto;
     width: 100%;
+    background: #FFF;
     .heading{
       display: flex;
       flex: 1 0 auto;
-
+      margin-bottom: 20px;
       .title{
 
         display: flex;
         flex: 1 0 auto; 
+        font-size: 17px;
+        color:#000;
         .big{
 
               display: flex;
@@ -590,6 +593,16 @@ textarea:focus, input:focus{
               font-size: 17px;
               margin-left: 20px;
               align-items: center;
+              a{
+                color: #000;
+                text-decoration: none;
+                &:focus{
+                  text-decoration: none;
+                }
+                &:active{
+                  text-decoration: none;
+                }
+              }
         }
         .small{
 
