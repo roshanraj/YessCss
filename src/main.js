@@ -30,11 +30,12 @@ import {browserHistory as history} from 'react-router';
 
 
 import App from './views/app';
-import BoxGeneratorView from './views/BoxGenerator';
+import BoxGeneratorView from './views/boxGenerator';
 import TextGeneratorView from './views/textGenerator';
 import ButtonGeneratorView from './views/buttonGenerator';
 import AnchorGeneratorView from './views/anchorGenerator';
 
+import Test from './views/test';
 
 import RouteNotFound from './views/routeNotFound';
 import errorHandler from './utils/errorHandler';
@@ -47,6 +48,7 @@ ReactDOM.render(
     <Router history={history}>
         <Route path="/" component={errorHandler(App)}>
             <IndexRoute component={errorHandler(BoxGeneratorView)}/>
+            <Route path="/test" component={errorHandler(Test)}/>
             <Route path="/boxgenerator" component={errorHandler(BoxGeneratorView)}/>
             <Route path="/textgenerator" component={errorHandler(TextGeneratorView)}/>
             <Route path="/buttongenrator" component={errorHandler(ButtonGeneratorView)}/>

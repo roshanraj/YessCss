@@ -1,6 +1,7 @@
 import React from 'react';
 import { Component, PropTypes } from 'react';
 import Single from '../components/single';
+import SingleDropDown from '../components/singleDropDown';
 import Three from '../components/three';
 import Color from '../components/color';
 import FontAwesome from 'react-fontawesome';
@@ -79,7 +80,7 @@ class BoxGenerator extends React.Component {
                         currentValue={this.state.opacity}
                         min={0}
                         max={1}></Three>
-                <BoxShadow ref="boxshadow"></BoxShadow>
+              
                 <Border ref="border"
                            name="Border"
                            propname="border"
@@ -87,13 +88,6 @@ class BoxGenerator extends React.Component {
                            func={this.handleChange}
                            ></Border>
                 
-
-    
-
-
-
-
-
             </div>
         )
     }
