@@ -4,7 +4,9 @@ import {Component, PropTypes} from 'react';
 import ColorPicker from 'react-color-picker'
 import FontAwesome from 'react-fontawesome';
 
-
+import Single from '../components/single';
+import Color from '../components/color';
+import SimpleDropDown from '../components/simpleDropDown';
 class TextGenerator extends React.Component {
     constructor(props) {
         super(props);
@@ -59,71 +61,22 @@ class TextGenerator extends React.Component {
     getSidePanel = () => {
         return (
             <div className="Grid  nopadding">
-                <div className="Grid-item  Grid-item-top Grid-item-dark">
-                    <div className="">
-                        <p className="action-label">Text</p>
-                    </div>
-                    <div className=" center">
-                        <input className="text-box" type="text" value={this.state.text} onChange={this.handleChange.bind(this, "text")}/>
-                    </div>
+              
+                <Single name="Text" propname="text" ivalue={this.state.text} func={this.handleChange}></Single>
+                <Color name="Color" propname="color" ivalue={this.state.color} func={this.handleChange} color={this.state.color}></Color>
+                <Single name="Font Size" propname="fontSize" ivalue={this.state.fontSize} func={this.handleChange}></Single>
+                <SimpleDropDown name="Font Weight"
+                                propname="fontWeight" 
+                                ivalue={this.state.fontWeight} 
+                                func={this.handleChange}
+                                list={["100","200","300","400","500","600"]}></SimpleDropDown> 
+                <SimpleDropDown name="Font Style"
+                                propname="fontStyle" 
+                                ivalue={this.state.fontStyle} 
+                                func={this.handleChange}
+                                list={["normal","bold","italic"]}></SimpleDropDown> 
+                
 
-                </div>
-
-                <div className="Grid-item">
-                    <div className="">
-                        <p className="action-label">Color</p>
-                    </div>
-                    <div className="entry form-group col-sm-7">
-                      <div className="input-group">
-                        <span className="input-group-btn">
-                        	<button style={{"backgroundColor":this.state.color, "width":40}} className="btn" type="button"><span className="glyphicon glyphicon-no"></span></button>
-                        </span>
-                        
-                        {/*<ColorPicker value={this.state.color} onDrag={this.onDrag.bind(this)} />*/}
-                        <input className="form-control" type="text" value={this.state.color} onChange={this.handleChange.bind(this, "color")}/>
-                      </div>
-                  </div>
-                </div>
-
-                <div className="Grid-item">
-                    <div className="">
-                        <p className="action-label">Size</p>
-                    </div>
-                    <div className="center">
-                        <input className="text-box" type="number" value={this.state.fontSize} onChange={this.handleChange.bind(this, "fontSize")} name="size" min="1"/>
-                    </div>
-                </div>
-
-                <div className="Grid-item">
-                    <div className="">
-                        <p className="action-label">Weight</p>
-                    </div>
-                    <div className="center">
-                        <select className="text-box" value={this.state.fontWeight} name="fontStyle" onChange={this.handleChange.bind(this, "fontWeight")}>
-                            <option value="100">100</option>
-                            <option value="200">200</option>
-                            <option value="300">300</option>
-                            <option value="400">400</option>
-                            <option value="500">500</option>
-                            <option value="600">600</option>
-                            <option value="700">700</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div className="Grid-item">
-                    <div className="">
-                        <p className="action-label">Style</p>
-                    </div>
-                    <div className=" center">
-                        <select className="text-box" value={this.state.fontStyle} name="fontStyle" onChange={this.handleChange.bind(this, "fontStyle")}>
-                            <option value="normal">Normal</option>
-                            <option value="italic">Italic</option>
-                            <option value="oblique">Oblique</option>
-                        </select>
-                    </div>
-                </div>
-                <div className="Grid-item Grid-item-bottom">…</div>
             </div>
         )
     }
@@ -142,7 +95,7 @@ class TextGenerator extends React.Component {
                         <div className="element subject" style={text_style}>{this.state.text}</div>
                         {this.state.error}
                     </div>
-                    <div className="sidebar" >
+                    <div className="sidebar" style={{ "border": "1px solid #cccccc", "height": "100%", "background": "#F7F7F7" }}>
                         {this.getSidePanel()}
                     </div>
                 </div>

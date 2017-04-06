@@ -3,6 +3,13 @@ import {Component, PropTypes} from 'react';
 
 import FontAwesome from 'react-fontawesome';
 
+
+
+import Single from '../components/single';
+import Color from '../components/color';
+import SimpleDropDown from '../components/simpleDropDown';
+import Border from '../components/border';
+
 class AnchorGenerator extends React.Component {
     constructor(props) {
         super(props);
@@ -15,7 +22,9 @@ class AnchorGenerator extends React.Component {
                 color:"#200",
                 border:"1px solid #333",
                 borderRadius:"0px 0px 0px 0px",
-                fontSize:"20px"
+                fontSize:"20px",
+                fontWeight:"100",
+                fontStyle:"normal",
         };
     }
 
@@ -50,6 +59,10 @@ class AnchorGenerator extends React.Component {
                 break;
             case "fontSize":
                 this.setState({fontSize: event.target.value});
+            case "fontWeight":
+                this.setState({fontWeight: event.target.value});
+            case "fontStyle":
+                this.setState({fontStyle: event.target.value});
                 break;
             // default:
         }
@@ -58,105 +71,30 @@ class AnchorGenerator extends React.Component {
     getSidePanel = () => {
         return (
             <div className="Grid  nopadding">
-                <div className="Grid-item  Grid-item-top Grid-item-dark">
-                    <div className="">
-                        Text
-                    </div>
-                    <div className=" center">
-                        <input
-                            className="text-box"
-                            type="text"
-                            value={this.state.text}
-                            onChange={this.handleChange.bind(this,"text")}
-                          />
-                    </div>
-                </div>
-                <div className="Grid-item">
-                    <div className="">
-                        href
-                    </div>
-                    <div className=" center">
-                        <input
-                            className="text-box"
-                            type="text"
-                            value={this.state.href}
-                            onChange={this.handleChange.bind(this,"href")}
-                          />
-                    </div>
-                </div>
 
-                <div className="Grid-item  Grid-item-top Grid-item-dark">
-                    <div className="">
-                        Font Size
-                    </div>
-                    <div className=" center">
-                        <input
-                            className="text-box"
-                            type="text"
-                            value={this.state.fontSize}
-                            onChange={this.handleChange.bind(this,"fontSize")}
-                          />
-                    </div>
-                </div>
-
-                <div className="Grid-item">
-                    <div className="">
-                        Color
-                    </div>
-                    <div className=" center">
-                        <input
-                            className="text-box"
-                            type="text"
-                            value={this.state.color}
-                            onChange={this.handleChange.bind(this,"color")}
-                          />
-                    </div>
-                </div>
-
-                <div className="Grid-item">
-                    <div className="">
-                        Background Color
-                    </div>
-                    <div className=" center">
-                        <input
-                            className="text-box"
-                            type="text"
-                            value={this.state.background}
-                            onChange={this.handleChange.bind(this,"background")}
-                          />
-                    </div>
-                </div>
-
-
-                <div className="Grid-item">
-                    <div className="">
-                        Border
-                    </div>
-                    <div className=" center">
-                        <input
-                            className="text-box"
-                            style={{width:"200px"}}
-                            type="text"
-                            value={this.state.border}
-                            onChange={this.handleChange.bind(this,"border")}
-                          />
-                    </div>
-                </div>
-                <div className="Grid-item">
-                    <div className="">
-                        Border Radius
-                    </div>
-                    <div className=" center">
-                        <input
-                            className="text-box"
-                            style={{width:"200px"}}
-                            type="text"
-                            value={this.state.borderRadius}
-                            onChange={this.handleChange.bind(this,"borderRadius")}
-                          />
-                    </div>
-                </div>
-                <div className="Grid-item Grid-item-bottom">…</div>
+                <Single name="Text" propname="text" ivalue={this.state.text} func={this.handleChange}></Single>
+                <Single name="href" propname="href" ivalue={this.state.href} func={this.handleChange}></Single>
+                <Color name="Color" propname="color" ivalue={this.state.color} func={this.handleChange} color={this.state.color}></Color>
+                <Single name="Font Size" propname="fontSize" ivalue={this.state.fontSize} func={this.handleChange}></Single>
+                <SimpleDropDown name="Font Weight"
+                            propname="fontWeight" 
+                            ivalue={this.state.fontWeight} 
+                            func={this.handleChange}
+                            list={["100","200","300","400","500","600"]}></SimpleDropDown> 
+            
+                <SimpleDropDown name="Font Style"
+                                propname="fontStyle" 
+                                ivalue={this.state.fontStyle} 
+                                func={this.handleChange}
+                                list={["normal","bold","italic"]}></SimpleDropDown> 
+                <Color name="Background Color" propname="background" ivalue={this.state.background} func={this.handleChange} color={this.state.background}></Color>
+                <Border ref="border"
+                           name="Border"
+                           propname="border"
+                           ivalue={this.state.border}
+                           func={this.handleChange}
+                           ></Border>
+                <Single name="Border Radius" propname="borderRadius" ivalue={this.state.borderRadius} func={this.handleChange}></Single>
             </div>
         )
     }
@@ -167,7 +105,9 @@ class AnchorGenerator extends React.Component {
             "color":this.state.color,
             "background":this.state.background,
             "border":this.state.border,
-            "fontSize":this.state.fontSize
+            "fontSize":this.state.fontSize,
+            "fontWeight":this.state.fontWeight,
+            "fontStyle":this.state.fontStyle,
         };
         return (
             <div className="holder">
