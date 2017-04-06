@@ -5,16 +5,19 @@ import ClassNames from 'classnames';
 class Single extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-                name: "",
-                value: props.ivalue,
-        };
+        // this.state = {
+        //         name: "",
+        //         value: props.ivalue,
+        // };
     
     }
 
 
     shouldComponentUpdate(nextProps, nextState) {
-      return true
+        // if (nextState.value == this.refs.abc.value)
+        //     return false;
+        // else
+            return true
     }
 
     _handleChange = (event) => {
@@ -31,7 +34,7 @@ class Single extends React.Component {
                     </div>
                     <div className="input">
                         <input
-                            
+                            ref = "abc"
                             className="text-box"
                             type="text"
                             value={this.props.ivalue}

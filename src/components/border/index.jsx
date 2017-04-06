@@ -47,8 +47,8 @@ class Border extends React.Component {
             default:
                 break;
         }
-        event.target.value = valueBox;
-        this.props.func(this.props.propname, event);
+        
+        this.props.func(this.props.propname, {target:{value:valueBox}});
         console.log("component value ",event.target.value);
         
     }
@@ -84,8 +84,7 @@ class Border extends React.Component {
 
 
                 <Color name="Color" propname="borderColor"  ivalue={this.state.borderColor} func={this.handleChange} color={this.state.borderColor}></Color>
-                <SingleDropDown name="Type" propname="borderType" ivalue={this.state.borderType} func={this.handleChange}></SingleDropDown>
-                        
+                <SingleDropDown name="Type" propname="borderType" ivalue={this.state.borderType} func={this.handleChange}></SingleDropDown>            
                 <Single name="Width" propname="borderWidth" ivalue={this.state.borderWidth} func={this.handleChange}></Single>  
 
 

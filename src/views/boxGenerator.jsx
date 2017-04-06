@@ -22,6 +22,7 @@ class BoxGenerator extends React.Component {
             height: "200px",
             border: "1px solid #333",
             borderRadius: "0px 0px 0px 0px",
+            boxShadow:"0px 0px 0px 0px #333",
             opacity: 1,
             testList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
         };
@@ -61,6 +62,9 @@ class BoxGenerator extends React.Component {
             case "opacity":
                 this.setState({ opacity: event.target.value });
                 break;
+            case "boxShadow":
+                this.setState({ boxShadow: event.target.value });
+                break;
             // default:
         }
 
@@ -87,6 +91,12 @@ class BoxGenerator extends React.Component {
                            ivalue={this.state.border}
                            func={this.handleChange}
                            ></Border>
+                <BoxShadow ref="boxShadow"
+                           name="Box Shadow"
+                           propname="boxShadow"
+                           ivalue={this.state.boxShadow}
+                           func={this.handleChange}
+                           ></BoxShadow>
                 
             </div>
         )
@@ -99,7 +109,8 @@ class BoxGenerator extends React.Component {
             "borderRadius": this.state.borderRadius,
             "background": this.state.background,
             "border": this.state.border,
-            "opacity": this.state.opacity
+            "opacity": this.state.opacity,
+            "boxShadow":this.state.boxShadow,
         };
         return (
             <div className="holder" >
