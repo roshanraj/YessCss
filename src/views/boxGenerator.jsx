@@ -1,13 +1,16 @@
 import React from 'react';
 import { Component, PropTypes } from 'react';
+import FontAwesome from 'react-fontawesome';
+
 import Single from '../components/single';
+import Dimension from '../components/dimension';
+
 import SingleDropDown from '../components/singleDropDown';
 import Three from '../components/three';
 import Color from '../components/color';
-import FontAwesome from 'react-fontawesome';
-
 import BoxShadow from '../components/boxShadow';
 import Border from '../components/border';
+import BorderRadius from '../components/borderRadius';
 // import Slider from 'material-ui/Slider';
 
 class BoxGenerator extends React.Component {
@@ -73,10 +76,7 @@ class BoxGenerator extends React.Component {
         return (
             <div className="Grid  nopadding">
                 
-                
-                <Single name="Height" propname="height" ivalue={this.state.height} func={this.handleChange}></Single>
-                <Single name="Width" propname="width" ivalue={this.state.width} func={this.handleChange}></Single>
-                <Single name="Border-Radius" propname="borderRadius" ivalue={this.state.borderRadius} func={this.handleChange}></Single>
+                <Dimension name="Dimension" propname={["height","width"]} ivalue={[this.state.height,this.state.width]} func={this.handleChange}></Dimension>
                 <Color name="Color" propname="background" ivalue={this.state.background} func={this.handleChange} color={this.state.background}></Color>
                 <Three name="Opacity"    
                         propname="opacity" 
@@ -91,12 +91,19 @@ class BoxGenerator extends React.Component {
                            ivalue={this.state.border}
                            func={this.handleChange}
                            ></Border>
+                <BorderRadius ref="borderRadius"
+                           name="Border Radius"
+                           propname="borderRadius"
+                           ivalue={this.state.borderRadius}
+                           func={this.handleChange}
+                           ></BorderRadius>
                 <BoxShadow ref="boxShadow"
                            name="Box Shadow"
                            propname="boxShadow"
                            ivalue={this.state.boxShadow}
                            func={this.handleChange}
                            ></BoxShadow>
+
                 
             </div>
         )

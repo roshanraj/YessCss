@@ -26,7 +26,7 @@ const Header = React.createClass({
                             <span className="icon-bar"></span>
                         </button>
                         <Link to="/" target="_self" className="navbar-brand" activeClassName=''>
-                            <img className="logo" src="./Logo.png" />
+                            <img className="logo" src="./logo.png" />
                         </Link>
                     </div>
                     <div className="collapse navbar-collapse" id="site-nav">

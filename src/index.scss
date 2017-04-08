@@ -397,6 +397,7 @@ body {
       margin-left: 20px;
       p{
         margin:0px;
+
       }
     }
     .input{
@@ -406,7 +407,10 @@ body {
               flex-direction: row;
               flex: 2 0 250px;
               padding: 0px 35px;
-
+              span{
+                margin:0px 25px;
+                padding-bottom: 2px;
+              }
               .color{
     
                 height: 27px;
@@ -513,7 +517,7 @@ textarea:focus, input:focus{
         align-items: center;
         justify-content: center;
         position:relative;
-
+        overflow:auto;
         .element{
           top: 50%;
           transform: translateX(-50%);
@@ -576,6 +580,9 @@ textarea:focus, input:focus{
     flex: 0 0 auto;
     width: 100%;
     background: #FFF;
+    .text{
+      font-size: 12px !important;
+    }
     .heading{
       display: flex;
       flex: 1 0 auto;

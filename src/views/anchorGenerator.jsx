@@ -9,6 +9,8 @@ import Single from '../components/single';
 import Color from '../components/color';
 import SimpleDropDown from '../components/simpleDropDown';
 import Border from '../components/border';
+import Font from '../components/font';
+import BorderRadius from '../components/borderRadius';
 
 class AnchorGenerator extends React.Component {
     constructor(props) {
@@ -18,7 +20,7 @@ class AnchorGenerator extends React.Component {
                 error: false,
                 text:"Text",
                 href:"https://google.com/",
-                background: '#000',
+                background: '#FFF',
                 color:"#200",
                 border:"1px solid #333",
                 borderRadius:"0px 0px 0px 0px",
@@ -59,8 +61,10 @@ class AnchorGenerator extends React.Component {
                 break;
             case "fontSize":
                 this.setState({fontSize: event.target.value});
+                break;
             case "fontWeight":
                 this.setState({fontWeight: event.target.value});
+                break;
             case "fontStyle":
                 this.setState({fontStyle: event.target.value});
                 break;
@@ -69,24 +73,20 @@ class AnchorGenerator extends React.Component {
 
     }
     getSidePanel = () => {
+        let font = [this.state.fontSize, this.state.fontWeight, this.state.fontStyle];
         return (
             <div className="Grid  nopadding">
 
                 <Single name="Text" propname="text" ivalue={this.state.text} func={this.handleChange}></Single>
                 <Single name="href" propname="href" ivalue={this.state.href} func={this.handleChange}></Single>
                 <Color name="Color" propname="color" ivalue={this.state.color} func={this.handleChange} color={this.state.color}></Color>
-                <Single name="Font Size" propname="fontSize" ivalue={this.state.fontSize} func={this.handleChange}></Single>
-                <SimpleDropDown name="Font Weight"
-                            propname="fontWeight" 
-                            ivalue={this.state.fontWeight} 
-                            func={this.handleChange}
-                            list={["100","200","300","400","500","600"]}></SimpleDropDown> 
-            
-                <SimpleDropDown name="Font Style"
-                                propname="fontStyle" 
-                                ivalue={this.state.fontStyle} 
-                                func={this.handleChange}
-                                list={["normal","bold","italic"]}></SimpleDropDown> 
+              
+                <Font ref="font"
+                           name="Font"
+                           propname={["fontSize","fontWeight","fontStyle"]}
+                           ivalue={font}
+                           func={this.handleChange}
+                           ></Font>
                 <Color name="Background Color" propname="background" ivalue={this.state.background} func={this.handleChange} color={this.state.background}></Color>
                 <Border ref="border"
                            name="Border"
@@ -94,7 +94,12 @@ class AnchorGenerator extends React.Component {
                            ivalue={this.state.border}
                            func={this.handleChange}
                            ></Border>
-                <Single name="Border Radius" propname="borderRadius" ivalue={this.state.borderRadius} func={this.handleChange}></Single>
+                <BorderRadius ref="borderRadius"
+                           name="Border Radius"
+                           propname="borderRadius"
+                           ivalue={this.state.borderRadius}
+                           func={this.handleChange}
+                           ></BorderRadius>
             </div>
         )
     }

@@ -19,6 +19,8 @@
     "deploy": "better-npm-run deploy",
     "deploy:dev": "better-npm-run deploy:dev",
     "deploy:prod": "better-npm-run deploy:prod",
+    "deploy:prod:nolint": "better-npm-run deploy:prod:nolint",
+    "deploy:nolint": "better-npm-run deploy:nolint",
     "codecov": "cat coverage/*/lcov.info | codecov"
   },
   "betterScripts": {
@@ -41,6 +43,12 @@
         "DEBUG": "app:*"
       }
     },
+    "deploy:nolint": {
+      "command": "npm run clean && npm run compile",
+      "env": {
+        "DEBUG": "app:*"
+      }
+    },
     "deploy:dev": {
       "command": "npm run deploy",
       "env": {
@@ -50,6 +58,13 @@
     },
     "deploy:prod": {
       "command": "npm run deploy",
+      "env": {
+        "NODE_ENV": "production",
+        "DEBUG": "app:*"
+      }
+    },
+    "deploy:prod:nolint": {
+      "command": "npm run deploy:nolint",
       "env": {
         "NODE_ENV": "production",
         "DEBUG": "app:*"

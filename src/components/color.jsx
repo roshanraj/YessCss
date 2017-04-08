@@ -1,5 +1,6 @@
 import React, {propTypes} from 'react';
 import ClassNames from 'classnames';
+import ColorPicker from 'rc-color-picker';
 
 class Color extends React.Component {
     constructor(props) {
@@ -21,6 +22,15 @@ class Color extends React.Component {
         // this.props.func()
         this.setState({value:event.target.value});
     }
+
+    changeHandler = (colors) => {
+        console.log(colors);
+    }
+
+    closeHandler = (colors) => {
+        console.log(colors);
+    }
+
    
     render() {
         return (
@@ -29,7 +39,14 @@ class Color extends React.Component {
                         <p className="action-label">{this.props.name}</p>
                     </div>
                     <div className="input dual">
-                        <div className="color" style={{background:this.props.color}}> </div>
+                        <div className="color" style={{background:this.props.color}}>
+                            <ColorPicker
+                                color={'#0ad'}
+                                alpha={50}
+                                onChange={this.changeHandler}
+                                placement="topReft"
+                                />
+                             </div>
                         <input
                             
                             className="text-box"
