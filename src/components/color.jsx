@@ -25,6 +25,7 @@ class Color extends React.Component {
 
     changeHandler = (colors) => {
         console.log(colors);
+        this.props.func(this.props.propname, {target:{value:colors.color}})
     }
 
     closeHandler = (colors) => {
@@ -39,14 +40,17 @@ class Color extends React.Component {
                         <p className="action-label">{this.props.name}</p>
                     </div>
                     <div className="input dual">
-                        <div className="color" style={{background:this.props.color}}>
-                            <ColorPicker
-                                color={'#0ad'}
-                                alpha={50}
-                                onChange={this.changeHandler}
-                                placement="topReft"
-                                />
-                             </div>
+                       
+                                <ColorPicker
+                                    color={this.props.ivalue}
+                                    alpha={50}
+                                    onChange={this.changeHandler}
+                                    placement="topRight"
+                                    >
+                                        <div className="react-custom-trigger color" style={{background:this.props.color}}>
+                                        </div>
+                                </ColorPicker>
+                             
                         <input
                             
                             className="text-box"
