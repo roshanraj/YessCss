@@ -24,12 +24,12 @@ class Color extends React.Component {
     }
 
     changeHandler = (colors) => {
-        console.log(colors);
+      
         this.props.func(this.props.propname, {target:{value:colors.color}})
     }
 
     closeHandler = (colors) => {
-        console.log(colors);
+        
     }
 
    
@@ -43,7 +43,7 @@ class Color extends React.Component {
                        
                                 <ColorPicker
                                     color={this.props.ivalue}
-                                    alpha={50}
+                                    alpha={100}
                                     onChange={this.changeHandler}
                                     placement="topRight"
                                     >
